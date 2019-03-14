@@ -1,0 +1,67 @@
+{
+    "useWhiteList": false,
+    "jdbc": {
+        "username": "sa",
+        "password": "",
+        "url": "jdbc:h2:/opt/tessera/qdata/database/db;MODE=Oracle;TRACE_LEVEL_SYSTEM_OUT=0",
+        "autoCreateTables": true
+    },
+    "serverConfigs":[
+        {
+            "app":"ThirdParty",
+            "enabled": true,
+            "serverSocket":{
+                "type":"INET",
+                "port": 9002,
+                "hostName": "http://10.1.1.66"
+            },
+            "communicationType" : "REST"
+        },
+        {
+            "app":"Q2T",
+            "enabled": true,
+            "serverSocket":{
+                "type":"UNIX",
+                "path":"/tmp/tm.ipc"
+            },
+            "communicationType" : "UNIX_SOCKET"
+        },
+        {
+          "app": "P2P",
+          "enabled": true,
+          "serverSocket": {
+            "type": "INET",
+            "port": 9001,
+            "hostName": "http://10.1.1.66"
+          },
+          "bindingAddress":"http://0.0.0.0:9001",
+          "communicationType": "GRPC"
+        }
+    ],
+    "peer": [
+      {
+          "url": "http://10.1.1.66:9001"
+      },
+      {
+          "url": "http://10.1.1.67:9001"
+      },
+      {
+          "url": "http://10.1.1.68:9001"
+      }
+    ],
+    "keys": {
+        "passwords": [],
+        "keyData": [
+          {
+            "config": {
+              "data": {
+                "bytes": "Wl+xSyXVuuqzpvznOS7dOobhcn4C5auxkFRi7yLtgtA="
+              },
+              "type": "unlocked"
+            },
+            "publicKey": "BULeR8JyUWhiuuCMU/HLA0Q5pzkYT+cHII3ZKBey3Bo="
+          }
+        ]
+    },
+    "alwaysSendTo": []
+}
